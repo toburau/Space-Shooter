@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c86d1uqdon6gi" path="res://player.tscn" id="1_6eo5e"]
 [ext_resource type="Script" uid="uid://cx6jkgaoga1ef" path="res://stage.gd" id="1_aees8"]
-[ext_resource type="PackedScene" uid="uid://cnrllwlq6w06x" path="res://asteroid.tscn" id="2_aees8"]
+[ext_resource type="PackedScene" uid="uid://cnrllwlq6w06x" path="res://asteroid_large.tscn" id="2_aees8"]
 
 [node name="stage" type="Node2D"]
 script = ExtResource("1_aees8")

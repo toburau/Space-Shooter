@@ -1,0 +1,21 @@
+[gd_scene load_steps=8 format=3 uid="uid://bajnh0kyosstd"]
+
+[ext_resource type="Script" uid="uid://bxhiyxxpag00e" path="res://asteroid.gd" id="1_ibt17"]
+[ext_resource type="Script" uid="uid://mc67ae0k1iu7" path="res://rock_sprite_2d.gd" id="2_13dxc"]
+[ext_resource type="Texture2D" uid="uid://y8bbgams0anm" path="res://art/meteorBrown_big1.png" id="3_44m3p"]
+[ext_resource type="Texture2D" uid="uid://c22wloah6bsk4" path="res://art/meteorBrown_big2.png" id="4_hfhoc"]
+[ext_resource type="Texture2D" uid="uid://b5vtw1rt0g74t" path="res://art/meteorBrown_big3.png" id="5_l2u6r"]
+[ext_resource type="Texture2D" uid="uid://7bskjh0qni7v" path="res://art/meteorBrown_big4.png" id="6_48he8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lu1tu"]
+radius = 40.2244
+
+[node name="asteroid" type="CharacterBody2D" groups=["enemy"]]
+script = ExtResource("1_ibt17")
+
+[node name="rock_sprite2D" type="Sprite2D" parent="."]
+script = ExtResource("2_13dxc")
+rock_textures = Array[Texture2D]([ExtResource("3_44m3p"), ExtResource("4_hfhoc"), ExtResource("5_l2u6r"), ExtResource("6_48he8")])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_lu1tu")

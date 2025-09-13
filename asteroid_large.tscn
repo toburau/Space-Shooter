@@ -10,7 +10,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_lu1tu"]
 radius = 40.2244
 
-[node name="asteroid" type="CharacterBody2D"]
+[node name="asteroid" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_p0ukn")
 
 [node name="rock_sprite2D" type="Sprite2D" parent="."]
