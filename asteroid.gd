@@ -1,22 +1,40 @@
 extends CharacterBody2D
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
 
 @export var size := 0 # large=0 middle=1 small=2
 
+@export var asteroid_scene_mid : PackedScene
+@export var asteroid_scene_small : PackedScene
+
 func _ready() -> void:
-	var rect = get_viewport_rect()
-	var cx = rect.size.x / 2
-	var cy = rect.size.y / 2
-	var tx = randi_range(cx - 100, cx + 100)
-	var ty = randi_range(cy - 100, cy + 100)
-	velocity.x = tx - position.x
-	velocity.y = ty - position.y
-	velocity = velocity.normalized() * randi_range(100, 300)
+	print(get_parent())
+	pass
 
 func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func take_damage() -> void:
+	match size:
+		0:
+			_spawn_split(asteroid_scene_mid,2)
+		1:
+			_spawn_split(asteroid_scene_small,2)
+		2:
+			pass	
 	queue_free()
+
+func _spawn_split(scene: PackedScene, count: int) -> void:
+	# count個に分裂
+	for i in count:
+		var new_asteroid = scene.instantiate()
+		new_asteroid.global_position = global_position
+		# ランダム方向を少しずつずらす
+		var angle = (TAU / count) * i + randf_range(-0.2, 0.2)
+		var dir = Vector2.RIGHT.rotated(angle)
+		var speed = velocity.length()
+		new_asteroid.velocity = dir * speed
+		new_asteroid.size = size + 1
+		get_parent().add_child(new_asteroid)
+		print(get_parent())
+		

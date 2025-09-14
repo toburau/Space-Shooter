@@ -32,5 +32,12 @@ func spawn_asteroid():
 		3:
 			x = -sprite_size.x
 	asteroid.position = Vector2(x,y)
+	var cx = screen_size.x / 2
+	var cy = screen_size.y / 2
+	var tx = randi_range(cx - 100, cx + 100)
+	var ty = randi_range(cy - 100, cy + 100)
+	asteroid.velocity.x = tx - asteroid.position.x
+	asteroid.velocity.y = ty - asteroid.position.y
+	asteroid.velocity = asteroid.velocity.normalized() * randi_range(100, 300)
+	asteroid.size = 0
 	add_child(asteroid)
-	
