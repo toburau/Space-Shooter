@@ -9,7 +9,7 @@ func _ready() -> void:
 	_enable_collision_later()
 
 func _enable_collision_later() -> void:
-	await get_tree().create_timer(0.1).timeout  # 0.1秒待つ（6フレーム程度）
+	await get_tree().create_timer(1.0).timeout  # 0.1秒待つ（6フレーム程度）
 	disabled = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

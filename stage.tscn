@@ -10,3 +10,4 @@ asteroid_scene = ExtResource("2_aees8")
 
 [node name="Player" parent="." instance=ExtResource("1_6eo5e")]
 position = Vector2(960, 540)
+fire_rate = 0.2

@@ -1,14 +1,11 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
-
 @export var size := 0 # large=0 middle=1 small=2
 
 @export var asteroid_scene_mid : PackedScene
 @export var asteroid_scene_small : PackedScene
 
 func _ready() -> void:
-	print(get_parent())
 	pass
 
 func _physics_process(delta: float) -> void:
@@ -30,11 +27,9 @@ func _spawn_split(scene: PackedScene, count: int) -> void:
 		var new_asteroid = scene.instantiate()
 		new_asteroid.global_position = global_position
 		# ランダム方向を少しずつずらす
-		var angle = (TAU / count) * i + randf_range(-0.2, 0.2)
+		var angle = TAU * randf()
 		var dir = Vector2.RIGHT.rotated(angle)
 		var speed = velocity.length()
-		new_asteroid.velocity = dir * speed
+		new_asteroid.velocity = dir * speed * 0.6
 		new_asteroid.size = size + 1
 		get_parent().add_child(new_asteroid)
-		print(get_parent())
-		

@@ -12,7 +12,7 @@ var player_size := Vector2.ZERO
 
 @onready var muzzle = $Muzzle
 
-@export var fire_rate: float = 0.2  # 連射間隔（秒）
+@export var fire_rate: float = 0.2 # 連射間隔（秒）
 var fire_cooldown: float = 0.0
 
 # Called when the node enters the scene tree for the first time.

@@ -12,7 +12,6 @@ radius = 18.0278
 
 [node name="asteroid" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_ibt17")
-asteroid_scene_mid = null
 asteroid_scene_small = ExtResource("2_ibt17")
 
 [node name="rock_sprite2D" type="Sprite2D" parent="."]
