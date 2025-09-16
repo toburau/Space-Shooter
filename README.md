@@ -49,3 +49,9 @@ Shotcutをインストールして余分な部分をカット
 小惑星が打たれたら、分裂する処理を追加  
 分裂したときの動きがいまいちなのは後で修正  
 
+### 100日チャレンジ15日目
+体当りしてくるエネミーを追加  
+アセットは https://kenney.nl/assets/simple-space を利用  
+素材は白黒なのでGodot上で赤色に  
+シーン作成して、CharacterBody2DとSprite2DとCoollisionShape2Dを追加  
+

@@ -1,15 +1,19 @@
 extends Node2D
 
 @export var asteroid_scene : PackedScene
+@export var enemy_ram_scene : PackedScene
+var screen_size : Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	var rect = get_viewport_rect()
+	screen_size = rect.size
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("debug"):
 		spawn_asteroid()
+		spawn_enemy_ram()
 
 func spawn_asteroid():
 	var asteroid = asteroid_scene.instantiate()
@@ -17,8 +21,6 @@ func spawn_asteroid():
 	var sprite_size = Vector2.ZERO
 	if sprite and sprite.texture:
 		sprite_size = sprite.texture.get_size()
-	var rect = get_viewport_rect()
-	var screen_size = rect.size
 	var x = randf_range(0, screen_size.x)
 	var y = randf_range(0, screen_size.y)
 	var n = randi_range(0, 3)
@@ -41,3 +43,10 @@ func spawn_asteroid():
 	asteroid.velocity = asteroid.velocity.normalized() * randi_range(100, 300)
 	asteroid.size = 0
 	add_child(asteroid)
+
+func spawn_enemy_ram():
+	var enemy_ram = enemy_ram_scene.instantiate()
+	enemy_ram.position.x = screen_size.x / 2
+	enemy_ram.position.y = screen_size.y / 2
+	add_child(enemy_ram)
+	
