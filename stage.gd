@@ -12,8 +12,23 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("debug"):
-		spawn_asteroid()
+		#spawn_asteroid()
 		spawn_enemy_ram()
+
+func get_spawn_position(size: Vector2) -> Vector2:
+	var x = randf_range(0, screen_size.x)
+	var y = randf_range(0, screen_size.y)
+	var n = randi_range(0, 3)
+	match n:
+		0:
+			y = -size.y
+		1:
+			x = screen_size.x + size.x
+		2:
+			y = screen_size.y + size.y
+		3:
+			x = -size.x
+	return Vector2(x,y)
 
 func spawn_asteroid():
 	var asteroid = asteroid_scene.instantiate()
@@ -21,19 +36,7 @@ func spawn_asteroid():
 	var sprite_size = Vector2.ZERO
 	if sprite and sprite.texture:
 		sprite_size = sprite.texture.get_size()
-	var x = randf_range(0, screen_size.x)
-	var y = randf_range(0, screen_size.y)
-	var n = randi_range(0, 3)
-	match n:
-		0:
-			y = -sprite_size.y
-		1:
-			x = screen_size.x + sprite_size.x
-		2:
-			y = screen_size.y + sprite_size.y
-		3:
-			x = -sprite_size.x
-	asteroid.position = Vector2(x,y)
+	asteroid.position = get_spawn_position(sprite_size)
 	var cx = screen_size.x / 2
 	var cy = screen_size.y / 2
 	var tx = randi_range(cx - 100, cx + 100)
@@ -46,7 +49,10 @@ func spawn_asteroid():
 
 func spawn_enemy_ram():
 	var enemy_ram = enemy_ram_scene.instantiate()
-	enemy_ram.position.x = screen_size.x / 2
-	enemy_ram.position.y = screen_size.y / 2
+	var sprite = enemy_ram.get_node_or_null("Sprite2D") as Sprite2D
+	var sprite_size = Vector2.ZERO
+	if sprite and sprite.texture:
+		sprite_size = sprite.texture.get_size()
+	enemy_ram.position = get_spawn_position(sprite_size)	
 	add_child(enemy_ram)
 	
