@@ -5,11 +5,16 @@ extends CharacterBody2D
 @export var asteroid_scene_mid : PackedScene
 @export var asteroid_scene_small : PackedScene
 
+var sprite_size = Vector2(120,120)
+
 func _ready() -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
 	move_and_slide()
+	var rect = get_viewport_rect().grow(sprite_size.length())
+	if not rect.has_point(global_position):
+		queue_free()
 
 func take_damage() -> void:
 	match size:

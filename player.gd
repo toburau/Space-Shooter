@@ -3,7 +3,7 @@ extends CharacterBody2D
 var screen_size # Size of the game window.
 var player_size := Vector2.ZERO
 
-@export var accel := 600.0   # 加速力
+@export var accel := 800.0   # 加速力
 @export var friction := 300.0 # 摩擦（慣性をどれくらい残すか）
 @export var max_speed := 300.0
 

@@ -32,10 +32,7 @@ func get_spawn_position(size: Vector2) -> Vector2:
 
 func spawn_asteroid():
 	var asteroid = asteroid_scene.instantiate()
-	var sprite = asteroid.get_node_or_null("rock_sprite2D") as Sprite2D
-	var sprite_size = Vector2.ZERO
-	if sprite and sprite.texture:
-		sprite_size = sprite.texture.get_size()
+	var sprite_size = Vector2(120,120) # 最大の隕石のサイズ
 	asteroid.position = get_spawn_position(sprite_size)
 	var cx = screen_size.x / 2
 	var cy = screen_size.y / 2
@@ -53,6 +50,6 @@ func spawn_enemy_ram():
 	var sprite_size = Vector2.ZERO
 	if sprite and sprite.texture:
 		sprite_size = sprite.texture.get_size()
-	enemy_ram.position = get_spawn_position(sprite_size)	
+	enemy_ram.position = get_spawn_position(sprite_size/2)	
 	add_child(enemy_ram)
 	
