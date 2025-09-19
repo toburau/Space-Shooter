@@ -50,3 +50,10 @@ func _physics_process(delta: float) -> void:
 	var rect = get_viewport_rect().grow(sprite_size.length()/2)
 	if not rect.has_point(global_position):
 		queue_free()
+
+func take_damage() -> void:
+	var explosion = preload("res://explosion.tscn").instantiate()
+	explosion.global_position = global_position
+	explosion.global_scale = Vector2(0.1, 0.1)
+	get_parent().add_child(explosion)
+	queue_free()

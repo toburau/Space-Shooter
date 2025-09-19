@@ -6,6 +6,7 @@ extends Sprite2D
 func _ready() -> void:
 	if rock_textures.size() > 0:
 		texture = rock_textures[randi() % rock_textures.size()]
+		rotation = randf() * TAU
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
