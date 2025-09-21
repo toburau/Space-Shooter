@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 var screen_size # Size of the game window.
 var player_size := Vector2.ZERO
+var alive := true
 
 @export var accel := 800.0   # 加速力
 @export var friction := 300.0 # 摩擦（慣性をどれくらい残すか）
@@ -23,6 +24,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+	if not alive:
+		return
+
 	# キーボード入力（8方向）
 	var key_input = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	# ジョイスティックの左スティック入力（0番コントローラー）
@@ -83,3 +87,14 @@ func shoot(direction: Vector2) -> void:
 	newBullet.rotation = direction.angle() + PI/2
 	newBullet.speed = bullet_speed
 	get_tree().current_scene.add_child(newBullet)
+
+func take_damage() -> void:
+	alive = false
+	$Ship.visible = false
+	var explosion = preload("res://explosion.tscn").instantiate()
+	explosion.global_position = global_position
+	explosion.global_scale = Vector2(0.3, 0.3)
+	explosion.wait_time = 0.7
+	explosion.shrink_time = 0.2
+	get_parent().add_child(explosion)
+	

@@ -47,6 +47,14 @@ func _physics_process(delta: float) -> void:
 	velocity = direction * speed
 	move_and_slide()
 	
+	# Playerとの当たり判定
+	for i in range(get_slide_collision_count()):
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
+		if collider.is_in_group("player"):
+			collider.take_damage()
+			take_damage()
+	
 	var rect = get_viewport_rect().grow(sprite_size.length()/2)
 	if not rect.has_point(global_position):
 		queue_free()

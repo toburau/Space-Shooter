@@ -2,6 +2,7 @@ extends Node2D
 
 @export var asteroid_scene : PackedScene
 @export var enemy_ram_scene : PackedScene
+@export var enemy_shooter_scene: PackedScene
 var screen_size : Vector2
 
 # Called when the node enters the scene tree for the first time.
@@ -13,7 +14,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("debug"):
 		#spawn_asteroid()
-		spawn_enemy_ram()
+		spawn_enemy(1)
 
 func get_spawn_position(size: Vector2) -> Vector2:
 	var x = randf_range(0, screen_size.x)
@@ -44,12 +45,18 @@ func spawn_asteroid():
 	asteroid.size = 0
 	add_child(asteroid)
 
-func spawn_enemy_ram():
-	var enemy_ram = enemy_ram_scene.instantiate()
-	var sprite = enemy_ram.get_node_or_null("Sprite2D") as Sprite2D
+func spawn_enemy(type :int):
+	var enemy = null
+	match type:
+		0:
+			enemy = enemy_ram_scene.instantiate()
+		1:
+			enemy = enemy_shooter_scene.instantiate()
+	if enemy == null:
+		return
+	var sprite = enemy.get_node_or_null("Sprite2D") as Sprite2D
 	var sprite_size = Vector2.ZERO
 	if sprite and sprite.texture:
 		sprite_size = sprite.texture.get_size()
-	enemy_ram.position = get_spawn_position(sprite_size/2)	
-	add_child(enemy_ram)
-	
+	enemy.position = get_spawn_position(sprite_size/2)	
+	add_child(enemy)	

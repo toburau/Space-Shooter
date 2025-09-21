@@ -12,6 +12,16 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	move_and_slide()
+
+	# Playerとの当たり判定
+	for i in range(get_slide_collision_count()):
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
+		if collider.is_in_group("player"):
+			collider.take_damage()
+			take_damage()
+			return
+	
 	var rect = get_viewport_rect().grow(sprite_size.length())
 	if not rect.has_point(global_position):
 		queue_free()
@@ -35,6 +45,6 @@ func _spawn_split(scene: PackedScene, count: int) -> void:
 		var angle = TAU * randf()
 		var dir = Vector2.RIGHT.rotated(angle)
 		var speed = velocity.length()
-		new_asteroid.velocity = dir * speed * 0.6
+		new_asteroid.velocity = dir * speed * 1.1
 		new_asteroid.size = size + 1
 		get_parent().add_child(new_asteroid)
