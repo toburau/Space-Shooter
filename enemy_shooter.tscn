@@ -1,16 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://pa8govycn4yd"]
+[gd_scene load_steps=5 format=3 uid="uid://pa8govycn4yd"]
 
 [ext_resource type="Texture2D" uid="uid://dgrcq01nuw4f2" path="res://art/enemyRed1.png" id="1_2xpqq"]
 [ext_resource type="Script" uid="uid://2co0jcojk5rb" path="res://enemy_shooter.gd" id="1_3vy8j"]
+[ext_resource type="PackedScene" uid="uid://dj2s15u0flctp" path="res://enemy_bullet.tscn" id="2_f6mbu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3vy8j"]
 radius = 35.2278
 
 [node name="enemy_shooter" type="CharacterBody2D"]
 script = ExtResource("1_3vy8j")
+bullet = ExtResource("2_f6mbu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -1.5708
 texture = ExtResource("1_2xpqq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_3vy8j")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(30, 0)

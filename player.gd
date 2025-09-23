@@ -20,7 +20,8 @@ var fire_cooldown: float = 0.0
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
 	var sprite = get_node("Ship") as Sprite2D
-	player_size = sprite.texture.get_size()	
+	player_size = sprite.texture.get_size()
+	rotation = -PI/2
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -58,7 +59,7 @@ func _physics_process(delta: float) -> void:
 	var shoot_dir = Vector2.ZERO
 	if stick_right_input.length() > 0.2:
 		shoot_dir = stick_right_input.normalized()
-		rotation = shoot_dir.angle() + PI/2
+		rotation = shoot_dir.angle()
 	# クールダウンを減らす
 	if fire_cooldown > 0.0:
 		fire_cooldown -= delta
@@ -84,7 +85,7 @@ func shoot(direction: Vector2) -> void:
 	var newBullet = bullet.instantiate()
 	newBullet.global_position = muzzle.global_position
 	newBullet.direction = direction  # 弾側に `direction: Vector2` を用意
-	newBullet.rotation = direction.angle() + PI/2
+	newBullet.rotation = direction.angle()
 	newBullet.speed = bullet_speed
 	get_tree().current_scene.add_child(newBullet)
 
