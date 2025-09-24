@@ -12,9 +12,11 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("debug"):
-		#spawn_asteroid()
-		#spawn_enemy(0)
+	if Input.is_action_just_pressed("debug1"):
+		spawn_asteroid()
+	if Input.is_action_just_pressed("debug2"):
+		spawn_enemy(0)
+	if Input.is_action_just_pressed("debug3"):
 		spawn_enemy(1)
 
 func get_spawn_position(size: Vector2) -> Vector2:

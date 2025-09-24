@@ -7,6 +7,7 @@
 radius = 21.8403
 
 [node name="enemy_ram" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 2
 script = ExtResource("1_j3shx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
