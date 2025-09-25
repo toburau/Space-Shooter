@@ -3,6 +3,10 @@ extends Node2D
 @export var asteroid_scene : PackedScene
 @export var enemy_ram_scene : PackedScene
 @export var enemy_shooter_scene: PackedScene
+
+var spawn_interval = 2.0
+var spawn_timer = spawn_interval
+
 var screen_size : Vector2
 
 # Called when the node enters the scene tree for the first time.
@@ -18,6 +22,17 @@ func _process(delta: float) -> void:
 		spawn_enemy(0)
 	if Input.is_action_just_pressed("debug3"):
 		spawn_enemy(1)
+
+	spawn_timer -= delta
+	if spawn_timer <= 0:
+		spawn_timer = spawn_interval
+		match randi_range(0,2):
+			0:
+				spawn_asteroid()
+			1:
+				spawn_enemy(0)
+			2:
+				spawn_enemy(1)
 
 func get_spawn_position(size: Vector2) -> Vector2:
 	var x = randf_range(0, screen_size.x)
@@ -45,6 +60,7 @@ func spawn_asteroid():
 	asteroid.velocity.x = tx - asteroid.position.x
 	asteroid.velocity.y = ty - asteroid.position.y
 	asteroid.velocity = asteroid.velocity.normalized() * randi_range(100, 300)
+	asteroid.rot_speed = randf_range(-1.0,1.0) * TAU * 0.01
 	asteroid.size = 0
 	add_child(asteroid)
 

@@ -10,6 +10,7 @@
 radius = 12.0
 
 [node name="asteroid" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 2
 script = ExtResource("1_at40x")
 
 [node name="rock_sprite2D" type="Sprite2D" parent="."]

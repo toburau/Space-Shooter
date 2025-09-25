@@ -7,10 +7,13 @@ extends CharacterBody2D
 
 var sprite_size = Vector2(120,120)
 
+var rot_speed = 0
+
 func _ready() -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
+	rotation += rot_speed
 	move_and_slide()
 
 	# Playerとの当たり判定

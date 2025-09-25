@@ -7,7 +7,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_3vy8j"]
 radius = 35.2278
 
-[node name="enemy_shooter" type="CharacterBody2D"]
+[node name="enemy_shooter" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 2
 script = ExtResource("1_3vy8j")
 bullet = ExtResource("2_f6mbu")
 

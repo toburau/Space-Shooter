@@ -14,6 +14,7 @@
 radius = 40.2244
 
 [node name="asteroid" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 2
 script = ExtResource("1_p0ukn")
 asteroid_scene_mid = ExtResource("2_5a1ob")
 asteroid_scene_small = ExtResource("3_rqjg5")

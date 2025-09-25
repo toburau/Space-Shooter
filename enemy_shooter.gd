@@ -65,9 +65,23 @@ func _physics_process(delta: float) -> void:
 			if not rect.has_point(global_position):
 				queue_free()
 	move_and_slide()
-
+	
+	for i in range(get_slide_collision_count()):
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
+		if collider.is_in_group("player"):
+			collider.take_damage()
+			take_damage()
+			
 func shoot(dir: Vector2):
 	var newBullet = bullet.instantiate()
 	newBullet.global_position = $Marker2D.global_position
 	newBullet.direction = dir
 	get_tree().current_scene.add_child(newBullet)
+
+func take_damage() -> void:
+	var explosion = preload("res://explosion.tscn").instantiate()
+	explosion.global_position = global_position
+	explosion.global_scale = Vector2(0.3, 0.3)
+	get_parent().add_child(explosion)
+	queue_free()

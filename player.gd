@@ -6,7 +6,7 @@ var alive := true
 
 @export var accel := 800.0   # 加速力
 @export var friction := 300.0 # 摩擦（慣性をどれくらい残すか）
-@export var max_speed := 300.0
+@export var max_speed := 400.0
 
 @export var bullet: PackedScene
 @export var bullet_speed: float = 600.0
