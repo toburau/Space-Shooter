@@ -92,6 +92,7 @@ func shoot(direction: Vector2) -> void:
 func take_damage() -> void:
 	alive = false
 	$Ship.visible = false
+	$CollisionShape2D.disabled = true
 	var explosion = preload("res://explosion.tscn").instantiate()
 	explosion.global_position = global_position
 	explosion.global_scale = Vector2(0.3, 0.3)

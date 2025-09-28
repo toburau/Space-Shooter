@@ -108,3 +108,7 @@ _on_body_entered() が呼び出されないと思ったら、シグナルの接�
 タイトル起動時にgrab_focus()でStartボタンにフォーカスを設定  
 インプットマップで、ui_acceptにパッドのxボタンをアサイン  
 UIの上下はパッドでもアサインされていたけど、決定はパッドでは何もアサインされていなかった。なぜだろう  
+
+### 100日チャレンジ27日目
+ゲームオーバー画面の追加  
+ステージに追加。CanvasLayer > Control > Label という構成にした  
