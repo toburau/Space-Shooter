@@ -90,9 +90,13 @@ func shoot(direction: Vector2) -> void:
 	get_tree().current_scene.add_child(newBullet)
 
 func take_damage() -> void:
+	if not alive:
+		return
 	alive = false
 	$Ship.visible = false
 	$CollisionShape2D.disabled = true
+	collision_layer = 0
+	collision_mask = 0
 	var explosion = preload("res://explosion.tscn").instantiate()
 	explosion.global_position = global_position
 	explosion.global_scale = Vector2(0.3, 0.3)

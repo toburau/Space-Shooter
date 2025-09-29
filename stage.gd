@@ -8,11 +8,14 @@ var spawn_interval = 2.0
 var spawn_timer = spawn_interval
 
 var screen_size : Vector2
+var gameover_timer = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var rect = get_viewport_rect()
 	screen_size = rect.size
+	$CanvasLayer/Control/Label.visible = false
+	gameover_timer = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -22,6 +25,18 @@ func _process(delta: float) -> void:
 		spawn_enemy(0)
 	if Input.is_action_just_pressed("debug3"):
 		spawn_enemy(1)
+
+	if not $Player.alive:
+		if $CanvasLayer/Control/Label.visible:
+			gameover_timer += delta
+			if gameover_timer > 5.0:
+				get_tree().change_scene_to_file("res://title_screen.tscn")
+		else:
+			gameover_timer += delta
+			if gameover_timer > 1.0:
+				gameover_timer = 0
+				$CanvasLayer/Control/Label.visible = true
+		return
 
 	spawn_timer -= delta
 	if spawn_timer <= 0:
