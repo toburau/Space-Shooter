@@ -118,3 +118,14 @@ UIの上下はパッドでもアサインされていたけど、決定はパッ
 プレイヤーがやられてからちょっと待ってからGAMEOVERのテキストを表示  
 更に少し待ってからタイトル画面へ遷移  
 プレイヤーがやられたあと、CollisionShape2D.disable を true にしたが、再び別の敵などにヒットしてしまうので、collision_layer と collision_mask に0を設定するようにして対応  
+
+### 100日チャレンジ29日目
+UIのサウンドを実装  
+サウンド素材は「効果音ラボ」のものを利用
+
+### 100日チャレンジ30日目
+撃ったとき、爆発音、岩を壊したとき、敵が弾を撃ったとき、BGM の音を実装  
+素材は以下のサイトから  
+https://soundeffect-lab.info/  
+https://taira-komori.net/index.html  
+https://www.springin.org/sound-stock/  

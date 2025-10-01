@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dfgwjw5e4ckyf"]
+[gd_scene load_steps=8 format=3 uid="uid://dfgwjw5e4ckyf"]
 
 [ext_resource type="Script" uid="uid://bxhiyxxpag00e" path="res://asteroid.gd" id="1_at40x"]
 [ext_resource type="Script" uid="uid://mc67ae0k1iu7" path="res://rock_sprite_2d.gd" id="2_lrg28"]
 [ext_resource type="Texture2D" uid="uid://bbij33d43rcbi" path="res://art/meteorBrown_small1.png" id="3_at40x"]
 [ext_resource type="Texture2D" uid="uid://gdnie4w56qcs" path="res://art/meteorBrown_small2.png" id="4_lrg28"]
 [ext_resource type="Script" uid="uid://ctta6qyrqvism" path="res://rock_collision_shape_2d.gd" id="5_lrg28"]
+[ext_resource type="AudioStream" uid="uid://ih0njdkfxhaf" path="res://sound/break_rock.mp3" id="6_tog46"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lu1tu"]
 radius = 12.0
@@ -20,3 +21,6 @@ rock_textures = Array[Texture2D]([ExtResource("3_at40x"), ExtResource("4_lrg28")
 [node name="rock_CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_lu1tu")
 script = ExtResource("5_lrg28")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_tog46")

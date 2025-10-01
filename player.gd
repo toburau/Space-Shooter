@@ -103,4 +103,5 @@ func take_damage() -> void:
 	explosion.wait_time = 0.7
 	explosion.shrink_time = 0.2
 	get_parent().add_child(explosion)
+	$AudioStreamPlayer.play()
 	

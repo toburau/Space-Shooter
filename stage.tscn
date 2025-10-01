@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cpehsgk8y2j2b"]
+[gd_scene load_steps=7 format=3 uid="uid://cpehsgk8y2j2b"]
 
 [ext_resource type="PackedScene" uid="uid://c86d1uqdon6gi" path="res://player.tscn" id="1_6eo5e"]
 [ext_resource type="Script" uid="uid://cx6jkgaoga1ef" path="res://stage.gd" id="1_aees8"]
 [ext_resource type="PackedScene" uid="uid://cnrllwlq6w06x" path="res://asteroid_large.tscn" id="2_aees8"]
 [ext_resource type="PackedScene" uid="uid://cai3ql61woapc" path="res://enemy_ram.tscn" id="3_gx6sy"]
 [ext_resource type="PackedScene" uid="uid://pa8govycn4yd" path="res://enemy_shooter.tscn" id="4_16g40"]
+[ext_resource type="AudioStream" uid="uid://tjygr0wnhvv6" path="res://sound/Shooting_04.mp3" id="6_vpggq"]
 
 [node name="stage" type="Node2D"]
 script = ExtResource("1_aees8")
@@ -36,3 +37,9 @@ theme_override_font_sizes/font_size = 100
 text = "GAME OVER"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_vpggq")
+volume_db = -10.0
+autoplay = true
+parameters/looping = false

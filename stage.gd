@@ -27,6 +27,7 @@ func _process(delta: float) -> void:
 		spawn_enemy(1)
 
 	if not $Player.alive:
+		$AudioStreamPlayer.stop()
 		if $CanvasLayer/Control/Label.visible:
 			gameover_timer += delta
 			if gameover_timer > 5.0:

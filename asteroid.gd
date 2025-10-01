@@ -10,6 +10,7 @@ var sprite_size = Vector2(120,120)
 var rot_speed = 0
 
 func _ready() -> void:
+	$AudioStreamPlayer.play()
 	pass
 
 func _physics_process(delta: float) -> void:
@@ -36,7 +37,7 @@ func take_damage() -> void:
 		1:
 			_spawn_split(asteroid_scene_small,2)
 		2:
-			pass	
+			pass
 	queue_free()
 
 func _spawn_split(scene: PackedScene, count: int) -> void:
