@@ -129,3 +129,9 @@ UIのサウンドを実装
 https://soundeffect-lab.info/  
 https://taira-komori.net/index.html  
 https://www.springin.org/sound-stock/  
+
+### 100日チャレンジ31日目
+小惑星が出現したときに壊れる音が鳴ってしまっていたバグを修正  
+分裂した小惑星の回転が無かったのを追加  
+ちょうど31日で1ヶ月なので、これはここで完成とする  
+

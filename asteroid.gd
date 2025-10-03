@@ -10,8 +10,8 @@ var sprite_size = Vector2(120,120)
 var rot_speed = 0
 
 func _ready() -> void:
-	$AudioStreamPlayer.play()
-	pass
+	if size != 0:
+		$AudioStreamPlayer.play()
 
 func _physics_process(delta: float) -> void:
 	rotation += rot_speed
@@ -50,5 +50,6 @@ func _spawn_split(scene: PackedScene, count: int) -> void:
 		var dir = Vector2.RIGHT.rotated(angle)
 		var speed = velocity.length()
 		new_asteroid.velocity = dir * speed * 1.1
+		new_asteroid.rot_speed = randf_range(-1.0,1.0) * TAU * 0.01
 		new_asteroid.size = size + 1
 		get_parent().add_child(new_asteroid)

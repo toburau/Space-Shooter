@@ -4,7 +4,7 @@ extends Node2D
 @export var enemy_ram_scene : PackedScene
 @export var enemy_shooter_scene: PackedScene
 
-var spawn_interval = 2.0
+var spawn_interval = 1.0
 var spawn_timer = spawn_interval
 
 var screen_size : Vector2
